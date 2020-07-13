@@ -13,6 +13,16 @@ enum Gender {
   female,
 }
 
+const labelTextStyle = TextStyle(
+  fontSize: 18,
+  color: Color(0xFF8D8E98),
+);
+
+const numberTextStyle = TextStyle(
+  fontSize: 50,
+  fontWeight: FontWeight.w900,
+);
+
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
@@ -20,6 +30,7 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Gender selectedGender;
+  int height = 180;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +39,7 @@ class _InputPageState extends State<InputPage> {
         title: Text('BMI CALCULATOR'),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Expanded(
               child: Row(
@@ -69,6 +81,43 @@ class _InputPageState extends State<InputPage> {
           Expanded(
             child: ReusableCard(
               colour: Color(activeCardColour),
+              cardChild: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'HEIGHT',
+                    style: labelTextStyle,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: <Widget>[
+                      Text(
+                        height.toString(),
+                        style: numberTextStyle,
+                      ),
+                      Text(
+                        " cm",
+                        style: labelTextStyle,
+                      ),
+                    ],
+                  ),
+                  Slider(
+                    value: height.toDouble(),
+                    min: 20.0,
+                    max: 200.0,
+                    activeColor: Color(0xFFFFEB1555),
+                    inactiveColor: Color(0xFF8D8E98),
+                    onChanged: (double newHeight) {
+                      height = newHeight.toInt();
+                      setState(() {
+                        height=newHeight.round();
+                      });
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
           Expanded(
