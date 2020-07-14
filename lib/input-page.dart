@@ -1,33 +1,13 @@
-import 'package:bmi_calculator/result-page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'reusable-card.dart';
 import 'icon-content.dart';
-
-const bottomContainerHeight = 80.0;
-const activeCardColour = 0xFF1D1E33;
-const inactiveCardColour = 0xFF111328;
-const bottomContainerColour = 0xFFEB1555;
+import 'constants.dart';
 
 enum Gender {
   male,
   female,
 }
-
-const labelTextStyle = TextStyle(
-  fontSize: 18,
-  color: Color(0xFF8D8E98),
-);
-
-const numberTextStyle = TextStyle(
-  fontSize: 50,
-  fontWeight: FontWeight.w900,
-);
-
-const largeButtonTextStyle = TextStyle(
-  fontSize: 25,
-  fontWeight: FontWeight.bold,
-);
 
 class InputPage extends StatefulWidget {
   @override
@@ -60,8 +40,8 @@ class _InputPageState extends State<InputPage> {
                     });
                   },
                   colour: Color(selectedGender == Gender.male
-                      ? activeCardColour
-                      : inactiveCardColour),
+                      ? kActiveCardColour
+                      : kInactiveCardColour),
                   cardChild: IconContent(
                     icon: FontAwesomeIcons.mars,
                     label: 'MALE',
@@ -76,8 +56,8 @@ class _InputPageState extends State<InputPage> {
                     });
                   },
                   colour: Color(selectedGender == Gender.female
-                      ? activeCardColour
-                      : inactiveCardColour),
+                      ? kActiveCardColour
+                      : kInactiveCardColour),
                   cardChild: IconContent(
                     icon: FontAwesomeIcons.venus,
                     label: 'FEMALE',
@@ -88,7 +68,7 @@ class _InputPageState extends State<InputPage> {
           )),
           Expanded(
             child: ReusableCard(
-              colour: Color(activeCardColour),
+              colour: Color(kActiveCardColour),
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -103,11 +83,11 @@ class _InputPageState extends State<InputPage> {
                     children: <Widget>[
                       Text(
                         height.toString(),
-                        style: numberTextStyle,
+                        style: kNumberTextStyle,
                       ),
                       Text(
                         " cm",
-                        style: labelTextStyle,
+                        style: kLabelTextStyle,
                       ),
                     ],
                   ),
@@ -143,7 +123,7 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(
-                    colour: Color(activeCardColour),
+                    colour: Color(kActiveCardColour),
                     cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -153,7 +133,7 @@ class _InputPageState extends State<InputPage> {
                         ),
                         Text(
                           weight.toString(),
-                          style: numberTextStyle,
+                          style: kNumberTextStyle,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -195,7 +175,7 @@ class _InputPageState extends State<InputPage> {
                 ),
                 Expanded(
                   child: ReusableCard(
-                    colour: Color(activeCardColour),
+                    colour: Color(kActiveCardColour),
                     cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -205,7 +185,7 @@ class _InputPageState extends State<InputPage> {
                         ),
                         Text(
                           age.toString(),
-                          style: numberTextStyle,
+                          style: kNumberTextStyle,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -256,13 +236,13 @@ class _InputPageState extends State<InputPage> {
               child: Center(
                 child: Text(
                   'CALCULATE',
-                  style: largeButtonTextStyle,
+                  style: kLargeButtonTextStyle,
                 ),
               ),
-              color: Color(bottomContainerColour),
+              color: Color(kBottomContainerColour),
               margin: EdgeInsets.only(top: 10),
               width: double.infinity,
-              height: bottomContainerHeight,
+              height: kBottomContainerHeight,
             ),
           ),
         ],
