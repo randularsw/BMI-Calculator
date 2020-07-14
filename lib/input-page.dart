@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/result-page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'reusable-card.dart';
@@ -21,6 +22,11 @@ const labelTextStyle = TextStyle(
 const numberTextStyle = TextStyle(
   fontSize: 50,
   fontWeight: FontWeight.w900,
+);
+
+const largeButtonTextStyle = TextStyle(
+  fontSize: 25,
+  fontWeight: FontWeight.bold,
 );
 
 class InputPage extends StatefulWidget {
@@ -153,6 +159,7 @@ class _InputPageState extends State<InputPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             FloatingActionButton(
+                              heroTag: "btn1",
                               backgroundColor: Color(0xFF4C4F5E),
                               child: Icon(
                                 FontAwesomeIcons.minus,
@@ -164,8 +171,11 @@ class _InputPageState extends State<InputPage> {
                                 });
                               },
                             ),
-                            SizedBox(width: 10,),
+                            SizedBox(
+                              width: 10,
+                            ),
                             FloatingActionButton(
+                              heroTag: "btn2",
                               backgroundColor: Color(0xFF4C4F5E),
                               child: Icon(
                                 FontAwesomeIcons.plus,
@@ -201,6 +211,7 @@ class _InputPageState extends State<InputPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             FloatingActionButton(
+                              heroTag: "btn3",
                               backgroundColor: Color(0xFF4C4F5E),
                               child: Icon(
                                 FontAwesomeIcons.minus,
@@ -212,8 +223,11 @@ class _InputPageState extends State<InputPage> {
                                 });
                               },
                             ),
-                            SizedBox(width: 10,),
+                            SizedBox(
+                              width: 10,
+                            ),
                             FloatingActionButton(
+                              heroTag: "btn4",
                               backgroundColor: Color(0xFF4C4F5E),
                               child: Icon(
                                 FontAwesomeIcons.plus,
@@ -234,11 +248,22 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          Container(
-            color: Color(bottomContainerColour),
-            margin: EdgeInsets.only(top: 10),
-            width: double.infinity,
-            height: bottomContainerHeight,
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, '/result');
+            },
+            child: Container(
+              child: Center(
+                child: Text(
+                  'CALCULATE',
+                  style: largeButtonTextStyle,
+                ),
+              ),
+              color: Color(bottomContainerColour),
+              margin: EdgeInsets.only(top: 10),
+              width: double.infinity,
+              height: bottomContainerHeight,
+            ),
           ),
         ],
       ),
